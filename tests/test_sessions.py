@@ -1,9 +1,9 @@
 import pytest
 
-from staydog.session import next_session_duration
+from staydog.session import Session
 
 
-class TestSessions:
+class TestSession:
     @pytest.mark.parametrize(
         "passed_session_count,expected_minutes",
         [
@@ -21,12 +21,18 @@ class TestSessions:
             (11, 271),
         ],
     )
-    def test_next_session_duration_should_increment_given_less_than_five_hours(
+    def test_session_duration_should_increment_given_12_or_less_completed_sessions(
         self, passed_session_count, expected_minutes
     ):
-        assert next_session_duration(passed_session_count) == expected_minutes
+        assert Session(passed_session_count).duration == expected_minutes
 
-    def test_next_sessions_duration_should_remain_five_hours_given_more_than_12_sessions(
+    def test_session_duration_should_remain_five_hours_given_more_than_12_completed_sessions(
         self,
     ):
-        assert next_session_duration(20) == 300
+        assert Session(20).duration == 300
+
+    def test_session_should_return_duration_of_zero_given_no_completed_sessions(self):
+        assert Session().duration == 1
+
+    def test_session_should_return_duration_given_completed_sessions(self):
+        assert Session(1).duration == 2
