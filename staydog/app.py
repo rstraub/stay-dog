@@ -1,5 +1,5 @@
+from session import next_session_duration
 from session_repository import get_session_count, update_session_count
-from sessions import next_session_duration
 
 
 def main():

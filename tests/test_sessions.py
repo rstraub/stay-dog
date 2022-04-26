@@ -1,6 +1,6 @@
 import pytest
 
-from staydog.sessions import next_session_duration
+from staydog.session import next_session_duration
 
 
 class TestSessions:
