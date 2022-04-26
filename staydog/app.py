@@ -4,11 +4,11 @@ from sessions import next_session_duration
 
 def main():
     successful_sessions = get_session_count()
-    print(f"Successful sessions so far: {successful_sessions}")
+    print(f"Successful sessions alone so far: {successful_sessions}")
 
     session_duration = next_session_duration(int(successful_sessions))
     print(
-        f"Did the dog stay alone successfully for {session_duration} minute(s)? (y/n)"
+        f"Was the dog stay alone successfully for {session_duration} minute(s)? (y/n)"
     )
 
     y_or_n = input()
