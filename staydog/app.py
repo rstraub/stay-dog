@@ -13,7 +13,8 @@ def main():
 
     y_or_n = input()
     if y_or_n == "n":
-        successful_sessions = successful_sessions - 1
+        if successful_sessions > 0:
+            successful_sessions = successful_sessions - 1
         update_session_count(successful_sessions)
         next_duration = next_session_duration(successful_sessions)
         print(f"Too bad, next session will be {next_duration} minute(s)")
