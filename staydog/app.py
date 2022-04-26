@@ -1,10 +1,10 @@
-from sessions import next_session_length
+from sessions import next_session_duration
 
 
 def main():
-    print("Enter amount of successful sessions:")
+    print("Enter amount of successfully completed sessions:")
     successful_sessions = int(input())
-    next_session = next_session_length(successful_sessions)
+    next_session = next_session_duration(successful_sessions)
     print("Next session: " + str(next_session) + " minutes")
 
 
