@@ -1,15 +1,9 @@
+import pytest
+
 from staydog.sessions import next_session_length
 
 
 class TestSessions:
-    def test_first_session_should_be_one_minute(self):
-        result = next_session_length(0)
-        assert result == 1
-
-    def test_second_session_should_be_two_minutes(self):
-        result = next_session_length(1)
-        assert result == 2
-
-    def test_third_session_should_be_four_minutes(self):
-        result = next_session_length(2)
-        assert result == 4
+    @pytest.mark.parametrize("passed_session_count,expected_minutes", [(0, 1), (1, 2), (2, 4), (3, 8), (4, 16)])
+    def test_next_session_length(self, passed_session_count, expected_minutes):
+        assert next_session_length(passed_session_count) == expected_minutes
