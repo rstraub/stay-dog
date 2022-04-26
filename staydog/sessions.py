@@ -1,8 +1,13 @@
 def next_session_duration(passed_session_count):
-    return session_durations()[passed_session_count]
+    durations = __session_durations()
+    if passed_session_count < len(durations):
+        return durations[passed_session_count]
+
+    max_duration = durations[len(durations) - 1]
+    return max_duration
 
 
-def session_durations():
+def __session_durations():
     max_session_duration = 5 * 60
     longest_session = 1
     result = []
