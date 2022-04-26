@@ -1,11 +1,13 @@
+from session_repository import get_session_count
 from sessions import next_session_duration
 
 
 def main():
-    print("Enter amount of successfully completed sessions:")
-    successful_sessions = int(input())
+    successful_sessions = get_session_count()
+    print("Completed sessions so far: " + str(successful_sessions))
+
     next_session = next_session_duration(successful_sessions)
-    print("Next session: " + str(next_session) + " minutes")
+    print("Next session: " + str(next_session) + " minute(s)")
 
 
 if __name__ == "__main__":
